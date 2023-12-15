@@ -1,0 +1,57 @@
+
+
+<div class="row">
+	<div ng-if="!SensorsController.sensors.length"
+		class="col-md-12">
+		<h3 class="description">No available sensors</h3>
+	</div>
+</div>
+
+
+
+<div class="row">
+	<div class="col-lg-3 col-md-6 col-sm-6"
+		ng-repeat="sensor in SensorsController.sensors track by sensor.getName()">
+		<div class="card card-stats">
+			<div class="card-header" style="float: right;">
+				<h5 class="card-title">{{sensor.getName()}}		
+					<i class="nc-icon nc-simple-remove" ng-style="{ color: '#B9B5B4' , fontSize: '70%' , marginTop: '6px' , float: 'right' , cursor: 'pointer'}" ng-click="SensorsController.deleteSensor(sensor.getName())"/></i>			
+				</h5>
+			</div>	
+			<div class="card-body ">
+				<div class="row" ng-repeat="propertyMeasured in sensor.getPropertiesMeasured()">
+					<div class="col-5 col-md-4">
+						<div class="icon-big text-center icon-warning">
+							<i
+								class="nc-icon nc-{{propertyMeasured.getName() | lowercase}}"></i>
+						</div>
+					</div>
+					<div class="col-7 col-md-8" ng-switch="sensor.isActive()">
+						<div class="numbers"  ng-switch-when="true">
+							<p class="card-category">{{propertyMeasured.getName()}}</p>									
+							<div>
+								<p data-alias="sensor.getValue(propertyMeasured) as value">		
+								<p class="card-title ">{{value.getValueWithUnit()}} </p>								
+							</div>
+						</div>
+						<div class="numbers"  ng-switch-when="false">
+							<p class="card-category">{{propertyMeasured.getNameWithUnit()()}}</p>									
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<div class="card-footer ">
+				<hr>
+				<div class="stats" ng-if="!sensor.isActive()" >
+					<i class="fa fa-info" ng-style="{ color: '#A29F9E' }"></i>	
+                   Inactivo
+				</div>
+				<div class="stats" ng-if="sensor.isActive()" >
+					<i class="fa fa-clock-o" ng-style="{ color: 'red' }"></i>	
+                   {{sensor.getSensorValues().getDate()}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
