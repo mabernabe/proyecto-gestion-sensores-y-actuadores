@@ -1,0 +1,32 @@
+{"properties": [
+  {
+    "name": "rest.api.base.uri",
+    "type": "java.lang.String",
+    "description": "A description for 'rest.api.base.uri'"
+  },
+  {
+    "name": "sensors.uri",
+    "type": "java.lang.String",
+    "description": "A description for 'sensors.uri'"
+  },
+  {
+    "name": "mqtt.folderpersistence",
+    "type": "java.lang.String",
+    "description": "A description for 'mqtt.folderpersistence'"
+  },
+  {
+    "name": "mqtt.broker.url",
+    "type": "java.lang.String",
+    "description": "A description for 'mqtt.broker.url'"
+  },
+  {
+    "name": "mqtt.folderPersistence",
+    "type": "java.lang.String",
+    "description": "A description for 'mqtt.folderPersistence'"
+  },
+  {
+    "name": "org.eclipse.paho.client.mqttv3.level",
+    "type": "java.lang.String",
+    "description": "A description for 'org.eclipse.paho.client.mqttv3.level'"
+  }
+]}
