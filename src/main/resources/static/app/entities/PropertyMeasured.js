@@ -1,6 +1,9 @@
 class PropertyMeasured {
 
   static TEMPERATURE_CENTIGRADES = new PropertyMeasured('TEMPERATURE_CENTIGRADES', 'Temperature', 'C')
+  static TEMPERATURE_KELVIN = new PropertyMeasured('TEMPERATURE_CENTIGRADES', 'Temperature', 'K')
+  static HUMIDITY_PERCENTAGE = new PropertyMeasured("HUMIDITY_PERCENTAGE", 'Humidity', "%")
+  static MOTION = new PropertyMeasured("MOTION", 'Motion', null)
 
   constructor(id, name, unit) {
 	this.id = id;
@@ -9,11 +12,11 @@ class PropertyMeasured {
   }
   
   getName () {
-	return this.name;
-  }
-  
-  getNameWithUnit () {
-	return this.name + " " + this.unit;
+	var name = this.name;
+	if (this.unit !== null) {
+		name = name + " " + this.unit;
+	}
+	return name;
   }
   
   getUnit () {
@@ -31,6 +34,15 @@ class PropertyMeasured {
     break;
  
 	}
+  }
+  
+  static getAllInstances () {
+	let allInstances = [];
+	allInstances.push(PropertyMeasured.TEMPERATURE_CENTIGRADES);
+	allInstances.push(PropertyMeasured.TEMPERATURE_KELVIN);
+	allInstances.push(PropertyMeasured.HUMIDITY_PERCENTAGE);
+	allInstances.push(PropertyMeasured.MOTION);
+	return allInstances;
   }
  
   

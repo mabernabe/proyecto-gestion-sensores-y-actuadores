@@ -7315,7 +7315,7 @@ License - nucleoapp.com/license/
   content: "\ea43";
 }
 
-.nc-pin::before {
+.nc-gpio::before {
   content: "\ea15";
 }
 

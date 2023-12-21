@@ -8,7 +8,7 @@ sensorsController.controller ("SensorsController",function($scope, SensorsServic
 
 	self.sensors = [];
 
-	self.getSensors = function(){
+	self.setSensors = function(){
 		SensorsService.getSensors()
 		.then(function(sensors) { 
 			self.sensors = sensors;	
@@ -17,9 +17,9 @@ sensorsController.controller ("SensorsController",function($scope, SensorsServic
 		})
 	}
 	
-	self.getSensors();   
+	self.setSensors();   
 	
-	let intervalIstance = $interval(self.getSensors, SENSORS_REFRESH_TIME_MS);
+	let intervalIstance = $interval(self.setSensors, SENSORS_REFRESH_TIME_MS);
 
 	$scope.$on('$destroy',function(){
 		if(intervalIstance) {

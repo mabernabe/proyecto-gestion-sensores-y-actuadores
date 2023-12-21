@@ -1,0 +1,88 @@
+<div class="card-body">
+	<div class="tab-content">
+		<div class="tab-pane show active" id="basic">
+			<h5 class="info-text">Set the {{InstallTransductorController.transductor.type}} basic information</h5>
+			<div class="row justify-content-center">
+				<div class="col-sm-3">
+                    <img src="../assets/img/{{InstallTransductorController.transductor.type}}.png" class="img-fluid rounded float-left rounded mx-auto d-block" id="wizardPicturePreview" title="" />
+                </div>
+				<div class="col-sm-6">
+					<div class="form-group">					
+						<label>{{InstallTransductorController.transductor.type}} Name</label>
+						<input type="text" class="form-control" ng-model="InstallTransductorController.transductor.name" name="transductorNameInput">
+					</div>
+                    <div class="form-group">     
+						<label>{{InstallTransductorController.transductor.type}} Properties</label>						
+						<select
+						class="selectpicker form_control dropdown"
+						data-style="btn btn-info btn-round" multiple name="propertySelect"
+						ng-model="InstallTransductorController.transductor.properties"
+						ng-multiple="true" data-dropup-auto="false" data-max-options="4"
+						title="Select" data-header="Select properties"
+						data-size="7">
+						<option
+							ng-repeat="property in InstallTransductorController.transductorSupportedProperties"
+							ng-value="property.getId()">{{property.getName()}}</option>
+					</select>
+					                   
+                    </div>
+				</div>
+			</div>
+		</div>
+		<div class="tab-pane" id="interface">
+			<h5 class="info-text">&#191;What kind of interface does the
+				{{InstallTransductorController.transductor.type}} use?</h5>
+			<div class="row justify-content-center">
+				<div class="col-lg-10">
+					<div class="row">
+						<div class="col-sm"
+							ng-repeat="supportedInterface in InstallTransductorController.transductorSupportedInterfaces">
+							<div class="choice" data-toggle="wizard-radio" ng-class="{active : supportedInterface === InstallTransductorController.transductor.interface.type}" 
+							ng-click="InstallTransductorController.setTransductorInterface(supportedInterface)">
+								<input type="radio" name="interfacetype" ng-value="supportedInterface.getName()" ng-model="InstallTransductorController.transductor.interface.type">
+								<div class="icon">
+									<i class="nc-icon nc-{{supportedInterface.getName() | lowercase}}"></i>
+								</div>
+								<h6>{{supportedInterface.getName()}}</h6>
+							</div>
+						</div>
+						<div ng-if="!InstallTransductorController.transductorSupportedInterfaces.length" class="col-sm" style="text-align: center;">
+							<h3 class="description">No available interfaces</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="tab-pane" id="configuration">
+			<div class="row justify-content-center" ng-if="InstallTransductorController.transductor.interface.type === 'MQTT'">
+				<div class="col-sm-12">
+					<h5 class="info-text">Interface configuration</h5>
+				</div>
+				<div class="row col-sm-12 justify-content-center"
+					ng-repeat="propertyName in InstallTransductorController.transductor.properties">
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label>Property</label> <input type="text"
+								class="form-control"  ng-value="propertyName" disabled>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label>Topic</label> <input type="text"
+								class="form-control"  ng-value="InstallTransductorController.transductor.name" disabled>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		setTimeout(() => {
+			$(".selectpicker").selectpicker('refresh');
+		}, 3000);
+	});
+</script>

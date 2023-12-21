@@ -48,6 +48,24 @@ sensorsService.service ("SensorsService",function(RestService, $q){
 		return new SensorValues(sensorValuesObject.date, values);
 	}
 	
+	self.installMQttSensor = function (newSensor) {
+		var deferred = $q.defer();
+		var newSensorObjRequest = createNewMqttSensorObjRequest(newSensor);
+		RestService.post(sensorsBaseUri.concat("mqttsensors//"), newSensorObjRequest).then(function(objectResponse) {
+			deferred.resolve(objectResponse);
+		}, function errorCallback(errorResponse) {
+			deferred.reject(errorResponse);
+		});
+		return deferred.promise ;
+	}
+	
+	function createNewMqttSensorObjRequest(newSensor) {
+		var newMqttSensor = {};
+		newMqttSensor.sensorName = newSensor.getName();
+		newMqttSensor.propertiesMeasured = newSensor.getPropertiesMeasured();
+		return newMqttSensor;
+	}
+	
 
 });
 
