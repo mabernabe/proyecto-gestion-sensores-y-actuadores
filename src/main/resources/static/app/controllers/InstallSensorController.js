@@ -24,7 +24,7 @@ installSensorController.controller ("InstallSensorController",function(SensorsSe
 		let sensor = new Sensor(self.transductor.name, false, self.transductor.properties, null);
 		if (self.transductor.interface.type === 'MQTT') {
 			promise = SensorsService.installMQttSensor(sensor);
-		}
+		} 
 		promise.then(function() {
 			var redirectURL = $route.current.$$route.redirectParam;
 			SweetAlertService.showSuccessAlertAndRedirect(self.transductor.type + ' installed with success', redirectURL);

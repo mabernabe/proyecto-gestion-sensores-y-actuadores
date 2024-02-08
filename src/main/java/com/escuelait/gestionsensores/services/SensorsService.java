@@ -43,7 +43,7 @@ public class SensorsService implements TransductorInterfaceVisitor{
 	}
 
 	public void newSensor(Sensor sensor) throws MqttTransductorInterfaceException  {
-		setUpSensorInterface(sensor.getSensorInterface());
+		setUpSensorInterface(sensor.getInterface());
 		sensorsRepository.save(sensor);
 	}
 

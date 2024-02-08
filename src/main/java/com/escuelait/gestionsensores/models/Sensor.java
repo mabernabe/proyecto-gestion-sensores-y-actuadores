@@ -48,16 +48,12 @@ public class Sensor extends Transductor{
 		return propertiesMeasured;
 	}
 
-	public TransductorInterface getSensorInterface() {
+	public TransductorInterface getInterface() {
 		return sensorInterface;
 	}
 
 	public void setValues(SensorValues values) {
 		this.values = values;
 	}
-
-	
-	
-	
 
 }

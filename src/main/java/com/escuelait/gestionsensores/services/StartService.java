@@ -22,7 +22,7 @@ public class StartService  implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		List<Sensor> sensors = sensorsRepository.findAll();
 		for(Sensor sensor: sensors ) {
-			sensorsService.setUpSensorInterface(sensor.getSensorInterface());
+			sensorsService.setUpSensorInterface(sensor.getInterface());
 		}
 	}
 	

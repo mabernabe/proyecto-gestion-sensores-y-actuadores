@@ -13,7 +13,7 @@ import com.escuelait.gestionsensores.utils.Date;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-//Sensor Values JSON Example : { "values" : {"Temperature C" : "25"}, "date" : "2022-03-23 15:41:03"}
+//Sensor Values JSON Example : { "values" : {"TEMPERATURE_CENTIGRADES" : "25"}, "date" : "2022-03-23 15:41:03"}
 public class MQTTSensorValuesDTO {
 	
 	private SensorValues sensorValues;

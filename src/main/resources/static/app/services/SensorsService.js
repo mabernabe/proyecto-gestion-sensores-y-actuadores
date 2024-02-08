@@ -61,7 +61,7 @@ sensorsService.service ("SensorsService",function(RestService, $q){
 	
 	function createNewMqttSensorObjRequest(newSensor) {
 		var newMqttSensor = {};
-		newMqttSensor.sensorName = newSensor.getName();
+		newMqttSensor.name = newSensor.getName();
 		newMqttSensor.propertiesMeasured = newSensor.getPropertiesMeasured();
 		return newMqttSensor;
 	}

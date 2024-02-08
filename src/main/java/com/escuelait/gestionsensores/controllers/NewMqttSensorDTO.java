@@ -12,21 +12,21 @@ import com.escuelait.gestionsensores.models.Sensor;
 public class NewMqttSensorDTO {
 	
 	@NotBlank
-	private String sensorName;
+	private String name;
 	
 	@NotEmpty
 	private List<PropertyMeasuredEnum> propertiesMeasured;
 
-	public NewMqttSensorDTO(String sensorName, List<PropertyMeasuredEnum> propertiesMeasured) {
+	public NewMqttSensorDTO(String name, List<PropertyMeasuredEnum> propertiesMeasured) {
 		super();
-		this.sensorName = sensorName;
+		this.name = name;
 		this.propertiesMeasured = propertiesMeasured;
 	}
 
 
 	public Sensor getSensor() {
-		MQTTTransductorInterface sensorInterface = new MQTTTransductorInterface(sensorName);
-		return new Sensor(sensorName, propertiesMeasured, sensorInterface);
+		MQTTTransductorInterface sensorInterface = new MQTTTransductorInterface(name);
+		return new Sensor(name, propertiesMeasured, sensorInterface);
 	}
 
 	
